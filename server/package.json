@@ -10,9 +10,13 @@
     "start": "nodemon src/index.js"
   },
   "dependencies": {
+    "apollo-datasource": "^0.4.0",
     "apollo-datasource-rest": "^0.4.0",
     "apollo-server": "2.5.0",
     "graphql": "^14.3.0",
-    "nodemon": "^1.19.0"
+    "isemail": "^3.2.0",
+    "nodemon": "^1.19.0",
+    "sequelize": "^5.8.6",
+    "sqlite3": "^4.0.8"
   }
 }
