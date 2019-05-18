@@ -1,0 +1,17 @@
+{
+  "name": "@apollographql-tutorial/server",
+  "version": "1.0.0",
+  "description": "Apollo GraphQL Server",
+  "private": true,
+  "author": "Artur Sousa",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "2.5.0",
+    "graphql": "^14.3.0",
+    "nodemon": "^1.19.0"
+  }
+}
