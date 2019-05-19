@@ -27,5 +27,31 @@ module.exports = {
     me: (_, __, { dataSources }) => {
       return dataSources.userAPI.findOrCreateUser();
     }
+  },
+  Mission: {
+    missionPatch: (mission, { size } = { size: "LARGE" }) => {
+      return size === "SMALL"
+        ? mission.missionPatchSmall
+        : mission.missionPatchLarge;
+    }
+  },
+  Launch: {
+    isBooked: (launch, _, { dataSources }) => {
+      return dataSources.userAPI.isBookedOnLaunch({
+        launchId: launch.id
+      });
+    }
+  },
+  User: {
+    trips: async (_, __, { dataSources }) => {
+      const launchIds = await dataSources.userAPI.getLaunchIdsByUser();
+      if (!launchIds.length) return [];
+
+      return (
+        dataSources.launchAPI.getLaunchesByIds({
+          launchIds
+        }) || []
+      );
+    }
   }
 };
