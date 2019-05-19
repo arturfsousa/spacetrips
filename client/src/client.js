@@ -2,7 +2,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 
-export const TOKEN_KEY = 'apollographlql-tutorial-token';
+export const TOKEN_KEY = 'user-token';
 
 const cache = new InMemoryCache();
 

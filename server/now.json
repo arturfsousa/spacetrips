@@ -1,5 +1,5 @@
 {
-  "name": "apollographql-tutorial-server",
+  "name": "spacetrips-server",
   "version": 2,
   "builds": [{ "src": "src/index.js", "use": "@now/node" }],
   "routes": [{ "src": "/.*", "dest": "src/index.js" }]

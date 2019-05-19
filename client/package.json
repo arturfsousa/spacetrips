@@ -1,11 +1,11 @@
 {
-  "name": "@apollographql-tutorial/client",
+  "name": "@spacetrips/client",
   "version": "0.1.0",
-  "description": "Apollo GraphQL Client",
+  "description": "Spacetrips Web App",
   "private": true,
   "author": "Artur Sousa",
   "license": "MIT",
-  "repository": "https://github.com/arturfsousa/apollographql-tutorial",
+  "repository": "https://github.com/arturfsousa/spacetrips",
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",

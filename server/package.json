@@ -1,11 +1,11 @@
 {
-  "name": "@apollographql-tutorial/server",
+  "name": "@spacetrips/server",
   "version": "0.1.0",
-  "description": "Apollo GraphQL Server",
+  "description": "Spacetrips Apollo GraphQL Server",
   "private": true,
   "author": "Artur Sousa",
   "license": "MIT",
-  "repository": "https://github.com/arturfsousa/apollographql-tutorial",
+  "repository": "https://github.com/arturfsousa/spacetrips",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js"
