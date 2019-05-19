@@ -27,18 +27,47 @@ const GET_LAUNCHES = gql`
 function Launches() {
   return (
     <Query query={GET_LAUNCHES}>
-      {({ data, loading, error }) => {
+      {({ data, loading, error, fetchMore }) => {
         if (loading) return <div>Loading...</div>;
         if (error) return <div>ERROR</div>;
 
-        const { launches } = data;
+        const { launches: result = null } = data;
+        const { launches = [] } = result;
+        const { hasMore = false, cursor = null } = result;
         return (
           <Fragment>
-            {launches &&
-              launches.launches &&
-              launches.launches.map(launch => (
-                <div key={launch.id}>{launch.site}</div>
-              ))}
+            {launches.map(launch => (
+              <div key={launch.id}>
+                {launch.id} - {launch.site}
+              </div>
+            ))}
+            {hasMore && (
+              <button
+                onClick={() => {
+                  fetchMore({
+                    variables: {
+                      after: cursor
+                    },
+                    updateQuery: (prev, { fetchMoreResult }) => {
+                      if (!fetchMoreResult) return prev;
+
+                      return {
+                        ...fetchMoreResult,
+                        launches: {
+                          ...fetchMoreResult.launches,
+                          launches: [
+                            ...prev.launches.launches,
+                            ...fetchMoreResult.launches.launches
+                          ]
+                        }
+                      };
+                    }
+                  });
+                }}
+              >
+                Load More
+              </button>
+            )}
           </Fragment>
         );
       }}
