@@ -3,7 +3,7 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
   type Query {
     """
-    Lists SpaceX lauches.
+    Lists SpaceX launches.
     """
     launches(
       """
@@ -15,7 +15,13 @@ const typeDefs = gql`
       """
       after: String
     ): LaunchConnection!
+    """
+    Get a launch by ID.
+    """
     launch(id: ID!): Launch
+    """
+    Get the loggedin user.
+    """
     me: User
   }
 
@@ -30,6 +36,9 @@ const typeDefs = gql`
     launches: [Launch]!
   }
 
+  """
+  The rocket launch.
+  """
   type Launch {
     id: ID!
     site: String
@@ -38,38 +47,60 @@ const typeDefs = gql`
     isBooked: Boolean!
   }
 
+  """
+  The rocket.
+  """
   type Rocket {
     id: ID!
     name: String
     type: String
   }
 
+  """
+  The user.
+  """
   type User {
     id: ID!
     email: String!
     trips: [Launch]!
   }
 
+  """
+  The rocket launch mission.
+  """
   type Mission {
     name: String
     missionPatch(size: PatchSize): String
   }
 
+  """
+  Mission's patch size.
+  """
   enum PatchSize {
     SMALL
     LARGE
   }
 
   type Mutation {
-    # if false, booking trips failed -- check errors
+    """
+    Book trips.
+    """
     bookTrips(launchIds: [ID]!): TripUpdateResponse!
 
-    # if false, cancellation failed -- check errors
+    """
+    Cancel one of your trips.
+    """
     cancelTrip(launchId: ID!): TripUpdateResponse!
 
-    login(email: String): String # login token
+    """
+    User login by email.
+    """
+    login(email: String): String
   }
 
+  """
+  The trip update mutantions response.
+  """
   type TripUpdateResponse {
     success: Boolean!
     message: String
