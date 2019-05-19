@@ -1,5 +1,6 @@
 {
+  "name": "apollographql-tutorial-server",
   "version": 2,
-  "builds": [{ "src": "src/index.js", "use": "@now/node-server" }],
+  "builds": [{ "src": "src/index.js", "use": "@now/node" }],
   "routes": [{ "src": "/.*", "dest": "src/index.js" }]
 }
