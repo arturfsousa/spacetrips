@@ -3,9 +3,17 @@
   "version": "0.1.0",
   "description": "Spacetrips Web App",
   "private": true,
-  "author": "Artur Sousa",
+  "author": {
+    "name": "Artur Sousa",
+    "email": "arturfelipe.sousa@gmail.com",
+    "url": "https://twitter.com/arturfsousa"
+  },
   "license": "MIT",
   "repository": "https://github.com/arturfsousa/spacetrips",
+  "engines": {
+    "node": ">=8.9.0",
+    "yarn": ">=1.0.0"
+  },
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",

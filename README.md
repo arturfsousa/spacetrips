@@ -20,3 +20,46 @@ I've made some changes to the tutorial code to fulfill my curiosities, like:
 - `Styled Components` over `emotion`. I like `emotion` but I've never used
   `Styled Components` before, so.
 - Implemented a real world authentication method
+- React Hooks
+
+## Running it locally
+
+### Requirements
+
+- Node.js
+- Yarn
+
+Check the `engines` in the `package.json` file for versions.
+
+### Setup
+
+If you like `Makefile`s, you can run the commands bellow, or check the
+`Makefile` for what to run:
+
+```sh
+make setup
+```
+
+### Starting `client` and `server`
+
+To run all:
+
+```sh
+make run
+```
+
+To run it on different terminal sessions:
+
+```sh
+make run-server
+```
+
+```sh
+make run-client
+```
+
+### Testing
+
+```sh
+make test
+```
