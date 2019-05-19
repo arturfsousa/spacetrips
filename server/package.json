@@ -5,6 +5,7 @@
   "private": true,
   "author": "Artur Sousa",
   "license": "MIT",
+  "repository": "https://github.com/arturfsousa/apollographql-tutorial",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js"
