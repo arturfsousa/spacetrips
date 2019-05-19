@@ -1,10 +1,10 @@
 # 🚀 Spacetrips
 
-Don't you ever wanted to travel the space? Discover new planets, new galaxies
+Don't you ever wanted to travel to space? Discover new planets, new galaxies
 and see earth from outside?
 
 Your dreams will come true with `Spacetrips`. With `Spacetrips` you can book
-future `SpaceX` mission launches, and travel the space as you watched on the
+future `SpaceX` mission launches, and travel to space as you watched on the
 movies.
 
 Not!!! This is a personal project that I've created during my studies with
