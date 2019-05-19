@@ -2,26 +2,32 @@ import React, { Fragment } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
+export const LAUNCH_TILE_DATA = gql`
+  fragment LaunchTile on Launch {
+    id
+    isBooked
+    rocket {
+      id
+      name
+    }
+    mission {
+      name
+      missionPatch
+    }
+  }
+`;
+
 const GET_LAUNCHES = gql`
-  query launchList($after: String) {
+  query LaunchList($after: String) {
     launches(after: $after) {
       cursor
       hasMore
       launches {
-        id
-        site
-        isBooked
-        rocket {
-          id
-          name
-        }
-        mission {
-          name
-          missionPatch
-        }
+        ...LaunchTile
       }
     }
   }
+  ${LAUNCH_TILE_DATA}
 `;
 
 function Launches() {
@@ -38,7 +44,7 @@ function Launches() {
           <Fragment>
             {launches.map(launch => (
               <div key={launch.id}>
-                {launch.id} - {launch.site}
+                {launch.id} - {launch.mission.name}
               </div>
             ))}
             {hasMore && (
