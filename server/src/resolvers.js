@@ -1,4 +1,4 @@
-const { paginateResults } = require("./utils");
+const { paginateResults } = require('./utils');
 
 module.exports = {
   Query: {
@@ -9,7 +9,7 @@ module.exports = {
       const launches = paginateResults({
         after,
         pageSize,
-        results: allLaunches
+        results: allLaunches,
       });
 
       return {
@@ -18,7 +18,7 @@ module.exports = {
         hasMore: launches.length
           ? launches[launches.length - 1].cursor !==
             allLaunches[allLaunches.length - 1].cursor
-          : false
+          : false,
       };
     },
     launch: (_, { id }, { dataSources }) => {
@@ -26,21 +26,21 @@ module.exports = {
     },
     me: (_, __, { dataSources }) => {
       return dataSources.userAPI.findOrCreateUser();
-    }
+    },
   },
   Mission: {
-    missionPatch: (mission, { size } = { size: "LARGE" }) => {
-      return size === "SMALL"
+    missionPatch: (mission, { size } = { size: 'LARGE' }) => {
+      return size === 'SMALL'
         ? mission.missionPatchSmall
         : mission.missionPatchLarge;
-    }
+    },
   },
   Launch: {
     isBooked: (launch, _, { dataSources }) => {
       return dataSources.userAPI.isBookedOnLaunch({
-        launchId: launch.id
+        launchId: launch.id,
       });
-    }
+    },
   },
   User: {
     trips: async (_, __, { dataSources }) => {
@@ -49,32 +49,32 @@ module.exports = {
 
       return (
         dataSources.launchAPI.getLaunchesByIds({
-          launchIds
+          launchIds,
         }) || []
       );
-    }
+    },
   },
   Mutation: {
     login: async (_, { email }, { dataSources }) => {
       const user = await dataSources.userAPI.findOrCreateUser({ email });
 
-      if (user) return Buffer.from(email).toString("base64");
+      if (user) return Buffer.from(email).toString('base64');
     },
     bookTrips: async (_, { launchIds }, { dataSources }) => {
       const results = await dataSources.userAPI.bookTrips({ launchIds });
       const launches = await dataSources.launchAPI.getLaunchesByIds({
-        launchIds
+        launchIds,
       });
 
       return {
         success: results && results.length === launchIds.length,
         message:
           results.length === launchIds.length
-            ? "trips booked successfully"
+            ? 'trips booked successfully'
             : `the following launches couldn't be booked: ${launchIds.filter(
                 id => !results.includes(id)
               )}`,
-        launches
+        launches,
       };
     },
     cancelTrip: async (_, { launchId }, { dataSources }) => {
@@ -83,15 +83,15 @@ module.exports = {
       if (!result)
         return {
           success: false,
-          message: "failed to cancel trip"
+          message: 'failed to cancel trip',
         };
 
       const launch = await dataSources.launchAPI.getLaunchById({ launchId });
       return {
         success: true,
-        message: "trip cancelled",
-        launches: [launch]
+        message: 'trip cancelled',
+        launches: [launch],
       };
-    }
-  }
+    },
+  },
 };

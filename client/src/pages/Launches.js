@@ -52,7 +52,7 @@ function Launches() {
                 onClick={() => {
                   fetchMore({
                     variables: {
-                      after: cursor
+                      after: cursor,
                     },
                     updateQuery: (prev, { fetchMoreResult }) => {
                       if (!fetchMoreResult) return prev;
@@ -63,11 +63,11 @@ function Launches() {
                           ...fetchMoreResult.launches,
                           launches: [
                             ...prev.launches.launches,
-                            ...fetchMoreResult.launches.launches
-                          ]
-                        }
+                            ...fetchMoreResult.launches.launches,
+                          ],
+                        },
                       };
-                    }
+                    },
                   });
                 }}
               >

@@ -9,20 +9,20 @@ const cache = new InMemoryCache();
 const link = new HttpLink({
   uri: 'http://localhost:4000/',
   headers: {
-    authorization: localStorage.getItem(TOKEN_KEY)
-  }
+    authorization: localStorage.getItem(TOKEN_KEY),
+  },
 });
 
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem(TOKEN_KEY),
-    cartItems: []
-  }
+    cartItems: [],
+  },
 });
 
 const client = new ApolloClient({
   cache,
-  link
+  link,
 });
 
 export default client;

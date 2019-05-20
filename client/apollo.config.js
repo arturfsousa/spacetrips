@@ -1,6 +1,6 @@
 module.exports = {
   client: {
     name: 'Spacetrips',
-    service: 'spacetrips'
-  }
+    service: 'spacetrips',
+  },
 };
